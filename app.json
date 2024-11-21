@@ -1,4 +1,7 @@
 {
   "name": "bounce",
-  "slug": "bounce"
+  "slug": "bounce",
+  "expo": {
+    "newArchEnabled": true
+  }
 }

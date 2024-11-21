@@ -7,6 +7,8 @@ import Animated, {
 import { View, Button } from "react-native";
 
 export default function AnimatedStyleUpdateExample(props) {
+  console.log("is fabric:", global._IS_FABRIC);
+  
   const randomWidth = useSharedValue(10);
 
   const config = {
