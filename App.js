@@ -15,24 +15,24 @@ const ballSize = 100;
 export default function AnimatedStyleUpdateExample(props) {
   console.log("is fabric:", global._IS_FABRIC);
 
-  const position = useSharedValue(1);
+  const position = useSharedValue(0);
 
   const tap = Gesture.Tap()
     .maxDuration(100000)
+    .onStart(() => {
+      position.value = (200);
+    })
     .onEnd(() => {
-      console.log('tap');
-      position.value = withDecay({
-        velocity: -1000,
-        deceleration: 0.998,
-        clamp: [-1, 1],
-        velocityFactor: 1,
-        rubberBandEffect: true,
-        rubberBandFactor: 0.6,
+      position.value = withSpring(0, {
+        mass: 5,
+        damping: 12,
+        stiffness: 150,
+        restDisplacementThreshold: 1,
       })
     });
 
   const animatedStyle = useAnimatedStyle(() => ({
-    transform: [{ translateY: position.value }],
+    transform: [{ translateY: -Math.abs(position.value) }],
   }));
 
   return (
