@@ -20,7 +20,7 @@ export default function AnimatedStyleUpdateExample(props) {
   const tap = Gesture.Tap()
     .maxDuration(100000)
     .onStart(() => {
-      position.value = (200);
+      position.value += 2;
     })
     .onEnd(() => {
       position.value = withSpring(0, {
@@ -28,6 +28,7 @@ export default function AnimatedStyleUpdateExample(props) {
         damping: 12,
         stiffness: 150,
         restDisplacementThreshold: 1,
+        velocity: -1500,
       })
     });
 
